@@ -50,6 +50,9 @@ import Gallery from "./pages/Gallery";
 import Library from "./pages/Library";
 
 import Login from "./pages/Login";
+// import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 
 function App() {
   return (
@@ -57,7 +60,7 @@ function App() {
       <Title/>
       <Navbar />
 
-      <div className="pt-70">
+      <div>
         <Routes>
           <Route path="/" element={<Home />} />
 
@@ -104,10 +107,13 @@ function App() {
           <Route path="/magazine" element={<Magazine />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/library" element={<Library />} />
+          
           <Route path="/login" element={<Login />} />
 
         </Routes>
       </div>
+
+      <Footer/>
     </>
   );
 }
