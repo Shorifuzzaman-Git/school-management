@@ -51,5 +51,10 @@ public class AdmissionForm {
         this.formId = UUID.randomUUID().toString();
         this.applicationDate = LocalDateTime.now();
     }
-
+    public enum Gender {
+        MALE, FEMALE
+    }
+    public enum ApplicationStatus {
+        PENDING, APPROVED, REJECTED, WAITLISTED
+    }
 }

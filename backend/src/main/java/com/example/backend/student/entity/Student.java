@@ -45,6 +45,6 @@ public class Student {
         this.createdAt = LocalDateTime.now();
     }
     public enum Gender {
-        Male, Female
+        MALE,FEMALE
     }
 }

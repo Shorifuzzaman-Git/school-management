@@ -1,6 +1,7 @@
 package com.example.backend.admission.controller;
 
 import com.example.backend.admission.dto.AdmissionFormRequest;
+import com.example.backend.admission.dto.AdmissionResponse;
 import com.example.backend.admission.entity.AdmissionForm;
 import com.example.backend.admission.service.AdmissionService;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -34,5 +35,11 @@ public class AdmissionController {
     public String confirm(@PathVariable String formId) {
         admissionService.confirmAdmission(formId);
         return "Admission confirmed";
+    }
+
+    @PreAuthorize("hasRole('STUDENT')")
+    @GetMapping("/status/{email}")
+    public AdmissionResponse status(@PathVariable String email){
+        return  admissionService.status(email);
     }
 }

@@ -1,9 +1,8 @@
 package com.example.backend.admission.service;
 import com.example.backend.admission.dto.AdmissionFormRequest;
+import com.example.backend.admission.dto.AdmissionResponse;
 import com.example.backend.admission.entity.Admission;
 import com.example.backend.admission.entity.AdmissionForm;
-import com.example.backend.admission.entity.ApplicationStatus;
-import com.example.backend.admission.entity.Gender;
 import com.example.backend.admission.repository.AdmissionFormRepository;
 import com.example.backend.admission.repository.AdmissionRepository;
 import com.example.backend.enrollment.entity.ClassEnrollment;
@@ -47,7 +46,7 @@ private final UserRepository userRepo;
 
         form.setApplicantName(req.applicantName);
         form.setDob(req.dob);
-        form.setGender(Gender.valueOf(req.gender));
+        form.setGender(AdmissionForm.Gender.valueOf(req.gender));
 
         form.setIntendedClass(req.intendedClass);
         form.setSessionId(req.sessionId);
@@ -70,13 +69,13 @@ private final UserRepository userRepo;
 
     public AdmissionForm approve(String id) {
         AdmissionForm form = formRepo.findById(id).orElseThrow();
-        form.setApplicationStatus(ApplicationStatus.APPROVED);
+        form.setApplicationStatus(AdmissionForm.ApplicationStatus.APPROVED);
         return formRepo.save(form);
     }
 
     public AdmissionForm reject(String id) {
         AdmissionForm form = formRepo.findById(id).orElseThrow();
-        form.setApplicationStatus(ApplicationStatus.REJECTED);
+        form.setApplicationStatus(AdmissionForm.ApplicationStatus.REJECTED);
         return formRepo.save(form);
     }
      @Transactional
@@ -85,7 +84,7 @@ private final UserRepository userRepo;
          AdmissionForm form = formRepo.findById(formId)
                  .orElseThrow();
 
-         if (form.getApplicationStatus() != ApplicationStatus.APPROVED) {
+         if (form.getApplicationStatus() != AdmissionForm.ApplicationStatus.APPROVED) {
              throw new RuntimeException("Form not approved");
          }
 
@@ -118,5 +117,13 @@ private final UserRepository userRepo;
          enrollment.setSessionId(form.getSessionId());
          enrollment.setRollNo(0); // manual later
          enrollmentRepo.save(enrollment);
+     }
+     public AdmissionResponse status(String email){
+        AdmissionForm form=formRepo.findByEmail(email).orElseThrow(()->new RuntimeException("Not found"));
+        AdmissionResponse response=new AdmissionResponse();
+        response.setApplicantName(form.getApplicantName());
+        response.setEmail(form.getEmail());
+        response.setStatus(form.getApplicationStatus().name());
+        return  response;
      }
 }
