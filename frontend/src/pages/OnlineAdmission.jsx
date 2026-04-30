@@ -7,7 +7,7 @@ const OnlineAdmission = () => {
     <div className=" min-h-screen bg-gray-100 flex justify-center items-center p-4">
       <form className="w-full max-w-5xl bg-white shadow-lg rounded-2xl p-6 space-y-6">
 
-        <h1 className="text-3xl font-bold text-center text-green-700">
+        <h1 className="text-3xl font-bold text-center text-gray-700">
           Admission Form
         </h1>
 
