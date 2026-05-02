@@ -53,6 +53,9 @@ import Login from "./pages/Login";
 // import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
+import Dashboard from "./admin/pages/Dashboard";
+import Admin from "./admin/Admin";
+
 
 function App() {
   return (
@@ -62,6 +65,10 @@ function App() {
 
       <div>
         <Routes>
+          //Admin Routs
+          <Route path="/admin" element={<Admin />} />
+          
+          
           <Route path="/" element={<Home />} />
 
           {/* About Us Subpages */}
