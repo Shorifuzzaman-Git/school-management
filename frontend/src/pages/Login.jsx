@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import loginImage from '../assets/login-image.svg';
+import ForgetPassword from '../components/ForgetPassword';
+import ResetPassword from '../components/ResetPassword';
 
 const Login = () => {
+  const [showForgetPassword, setShowForgetPassword] = useState(false);
+  const [showResetPassword, setShowResetPassword] = useState(false);
+
+  const closeModals = () => {
+    console.log('Closing modals');
+    setShowForgetPassword(false);
+    setShowResetPassword(false);
+  };
   return (
     <div className='min-h-screen bg-slate-100 flex flex-col items-center justify-center px-4 py-10'>
 
@@ -52,7 +62,7 @@ const Login = () => {
               </h2>
             </div>
 
-            <form className='space-y-5'>
+            <form className='space-y-5' onSubmit={(e) => e.preventDefault()}>
               <div>
                 <label className='block text-sm font-medium text-slate-700 mb-2'>
                   Email
@@ -76,26 +86,55 @@ const Login = () => {
               </div>
 
               <button
-                type='button'
+                type='submit'
                 className='w-full rounded-2xl bg-green-600 px-4 py-3 text-white font-semibold hover:bg-green-700 transition'
               >
                 Login
               </button>
 
-              <div className='flex justify-between text-sm text-slate-600'>
-                <a href='#' className='hover:underline text-red-500'>
-                  Forgot password?
-                </a>
-                <a href='#' className='hover:underline text-red-500'>
-                  Reset password
-                </a>
-              </div>
             </form>
 
+            <div className='flex justify-between text-sm text-slate-600' onClick={(e) => e.stopPropagation()}>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  console.log('Forget password button clicked');
+                  setShowForgetPassword(true);
+                }}
+                className='hover:underline text-red-500 transition-colors'
+              >
+                Forgot password?
+              </button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  console.log('Reset password button clicked');
+                  setShowResetPassword(true);
+                }}
+                className='hover:underline text-red-500 transition-colors'
+              >
+                Reset password
+              </button>
+            </div>
+
           </div>
+
         </motion.div>
 
       </div>
+
+      {/* Forget Password Modal */}
+      {showForgetPassword && (
+        <ForgetPassword onClose={closeModals} />
+      )}
+
+      {/* Reset Password Modal */}
+      {showResetPassword && (
+        <ResetPassword onClose={closeModals} />
+      )}
+
     </div>
   );
 };
