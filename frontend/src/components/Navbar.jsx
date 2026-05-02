@@ -23,9 +23,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-linear-to-t from-green-500 to-green-700 shadow-md sticky top-0 z-50">
-
-      
+    <nav className="sticky top-0 left-0 right-0 z-50 w-full bg-gradient-to-r from-green-500 to-green-700 shadow-md">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
 
         {/* LOGO (ONLY MOBILE + TABLET) */}
