@@ -19,23 +19,6 @@ public class AdmissionController {
           return admissionService.apply(admissionFormRequest);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/{id}/approve")
-    public AdmissionForm approve(@PathVariable String id) {
-        return admissionService.approve(id);
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/{id}/reject")
-    public AdmissionForm reject(@PathVariable String id) {
-        return admissionService.reject(id);
-    }
-   @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/{formId}/confirm")
-    public String confirm(@PathVariable String formId) {
-        admissionService.confirmAdmission(formId);
-        return "Admission confirmed";
-    }
 
     @PreAuthorize("hasRole('STUDENT')")
     @GetMapping("/status/{email}")

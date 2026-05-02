@@ -79,9 +79,9 @@ private final UserRepository userRepo;
         return formRepo.save(form);
     }
      @Transactional
-     public void confirmAdmission(String formId) {
+     public void confirmAdmission(String id) {
 
-         AdmissionForm form = formRepo.findById(formId)
+         AdmissionForm form = formRepo.findById(id)
                  .orElseThrow();
 
          if (form.getApplicationStatus() != AdmissionForm.ApplicationStatus.APPROVED) {
