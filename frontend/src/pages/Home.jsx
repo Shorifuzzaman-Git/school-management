@@ -68,7 +68,7 @@ const Home = () => {
     <div className='min-h-screen bg-gray-50'>
 
       {/* Sticky Breaking News Bar */}
-      <div className='sticky top-16 z-40 bg-gray-300 text-black py-2 border-b-2 border-gray-400 shadow-lg'>
+      <div className=' sticky top-16 z-40 bg-gray-300 text-black py-2 border-b-2 border-gray-400 shadow-lg'>
         <div className='max-w-7xl mx-auto px-4 flex items-center gap-3'>
           <span className='font-bold text-lg whitespace-nowrap animate-pulse'>🔴 BREAKING</span>
           <div className='flex-1 overflow-hidden'>
@@ -78,13 +78,14 @@ const Home = () => {
                 x: {
                   repeat: Infinity,
                   repeatType: "loop",
-                  duration: 30,
+                  duration: 25,
                   ease: "linear",
                 },
               }}
               className='whitespace-nowrap text-sm font-semibold'
             >
               • Admission open for 2026-2027 • Parent-Teacher Meeting on May 5
+
             </motion.div>
           </div>
         </div>
@@ -146,21 +147,15 @@ const Home = () => {
             viewport={{ once: true }}
             className='text-center mb-12'
           >
-            <h2 className='text-3xl md:text-4xl font-bold text-gray-900 mb-6'>Overview</h2>
+            <h2 className='text-3xl md:text-4xl font-bold text-green-600 mb-6'>Overview</h2>
             <div className='grid md:grid-cols-2 gap-8 items-center'>
-              <div className='space-y-4 text-gray-700'>
-                <p className='text-lg leading-relaxed'>
+              <div className='text-justify text-gray-700'>
                   Shahjalal University School and College is a premier educational institution committed to
-                  providing quality education and holistic development to students from classes 1 through 12.
-                </p>
-                <p className='text-lg leading-relaxed'>
+                  providing quality education and holistic development to students from classes nursey through 12.
                   Established with a vision to create future leaders, our school combines traditional values
                   with modern teaching methodologies, ensuring academic excellence and character building.
-                </p>
-                <p className='text-lg leading-relaxed'>
                   We offer comprehensive education with state-of-the-art facilities, experienced faculty,
                   and a nurturing environment that fosters creativity, critical thinking, and social responsibility.
-                </p>
               </div>
               <div className='bg-green-50 p-6 rounded-lg'>
                 <h3 className='text-xl font-semibold text-green-800 mb-4'>Our Mission</h3>
@@ -169,7 +164,7 @@ const Home = () => {
                   and contribute positively to society.
                 </p>
                 <Link
-                  to="/overview"
+                  to="/VisionAndMission"
                   className='inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition duration-300'
                 >
                   Read More
@@ -214,9 +209,9 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className='bg-gradient-to-r from-green-600 to-green-700 text-white p-8 rounded-xl mb-12'
+            className='bg-white text-gray-900 p-8 shadow-lg rounded-xl mb-12'
           >
-            <h3 className='text-2xl font-bold text-center mb-6'>National Rankings</h3>
+            <h3 className='text-2xl font-bold text-green-600 text-center mb-6'>National Rankings</h3>
             <div className='grid grid-cols-2 md:grid-cols-4 gap-6 text-center'>
               <div>
                 <Trophy className='w-10 h-10 mx-auto mb-2' />
@@ -249,7 +244,7 @@ const Home = () => {
             viewport={{ once: true }}
             className='bg-white rounded-xl shadow-lg p-6 md:p-8'
           >
-            <h3 className='text-2xl font-bold text-gray-900 mb-6 text-center'>Notice Board</h3>
+            <h3 className='text-2xl font-bold text-green-600 mb-6 text-center'>Notice Board</h3>
             <div className='space-y-4'>
               {notices.slice(0, 3).map((notice) => (
                 <div key={notice.id} className='border-l-4 border-green-500 pl-4 py-3 hover:bg-gray-50 transition duration-300'>
